@@ -13,21 +13,18 @@ myPort.on('close', showPortClose);
 myPort.on('error', showError);
 
 function openPort() {
-	var brightness = 0;
+	
+
 	console.log("Port open");
-	//console.log("baud rate: " + myPort.options.baudRate);
 
 	function sendData() {
-		myPort.write(brightness.toString());
-		console.log("Sending " + brightness);
+		
+		var drink = Math.floor((Math.random() * 6));
+		myPort.write(drink.toString());
+		console.log("Sending " + drink)
 
-		if (brightness < 255) {
-			brightness += 10;
-		} else {
-			brightness = 0;
-		}
 	}
-	setInterval(sendData, 500);
+	setInterval(sendData, 20000);
 }
 
 function readSerialData(data) {
